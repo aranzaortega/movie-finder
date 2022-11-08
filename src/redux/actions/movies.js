@@ -15,8 +15,7 @@ export const fetchMovie = (movieId) => async (dispatch) => {
         dispatch(startFetchMovie());
         const response = await fetch(`${BASE_URL}/om?i=${movieId}`, { headers });
         const data = await response.json();
-
-        console.log(data);
+        dispatch(successFetchMovie({ data }));
     } catch (error){
         dispatch(errorFetchMovie({ error }));
     }
