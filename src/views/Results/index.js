@@ -2,7 +2,7 @@
 import { useParams, useNavigate } from "react-router";
 import ResultsImage from '../../assets/results.png';
 import { useFetchMoviesQuery } from '../../redux/api/movies'
-import Loading from './components/Loading';
+import Loading from '../../components/Loading';
 import List from './components/List';
 import Error from "./components/Error";
 
@@ -18,7 +18,7 @@ const Results = () => {
 
     const renderContent = () => {
         if (error) return <Error error={error}/>
-        else if (isLoading || isFetching) return <Loading />
+        else if (isLoading || isFetching) return <Loading message={'Searching movie...'}/>
         else if (isSuccess && movie) return <List data={movie} onListItemClick={handleListItemClick} />
         else return undefined
     }
